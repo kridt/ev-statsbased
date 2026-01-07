@@ -344,7 +344,7 @@ const BuilderCard = ({ builder }) => {
               key={idx}
               className="text-[10px] bg-dark-900/50 text-dark-300 px-2 py-1 rounded-lg"
             >
-              {bet.market} @{bet.bookmakerOdds.toFixed(2)}
+              {bet.selectionName || bet.market} @{bet.bookmakerOdds.toFixed(2)}
             </span>
           ))}
         </div>
@@ -385,7 +385,7 @@ const BuilderCard = ({ builder }) => {
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="text-white font-medium">
-                          {bet.market}
+                          {bet.selectionName || bet.market}
                         </div>
                         <div className="text-xs text-dark-400 mt-0.5 capitalize">
                           {bet.betType?.replace('_', ' ')}

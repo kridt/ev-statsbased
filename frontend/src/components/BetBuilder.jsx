@@ -133,10 +133,11 @@ const BetBuilder = ({
 
   // Format bet name
   const formatBetName = (bet) => {
+    const marketName = bet.selectionName || bet.market;
     if (bet.player) {
-      return `${bet.player}: ${bet.market}`;
+      return `${bet.player}: ${marketName}`;
     }
-    return bet.market;
+    return marketName;
   };
 
   // Format match name

@@ -681,13 +681,13 @@ const WhyThisIsValue = ({ bet }) => {
   const edge = bet.edge;
   const isPrimary = isPrimaryBookmaker(bet.bookmaker);
 
-  // Determine bet direction
-  const isOver = bet.market?.toLowerCase().includes('over') || bet.market?.toLowerCase().includes('yes');
-  const isUnder = bet.market?.toLowerCase().includes('under') || bet.market?.toLowerCase().includes('no');
+  // Determine bet direction (check selection field first, then market/selectionName)
+  const selectionStr = (bet.selection || bet.selectionName || bet.market || '').toLowerCase();
+  const isOver = selectionStr.includes('over') || selectionStr.includes('yes');
+  const isUnder = selectionStr.includes('under') || selectionStr.includes('no');
 
-  // Extract line from market name
-  const lineMatch = bet.market?.match(/(\d+\.?\d*)/);
-  const line = lineMatch ? lineMatch[1] : '';
+  // Extract line from selectionName or market name, or use points directly
+  const line = bet.points || (bet.selectionName || bet.market || '').match(/(\d+\.?\d*)/)?.[1] || '';
 
   // Get market type description
   const getMarketDescription = () => {
@@ -1197,7 +1197,7 @@ const BestBetsSummary = ({ bets }) => {
               </motion.span>
               <div>
                 <div className="text-sm text-white font-semibold flex items-center gap-2">
-                  {bet.market}
+                  {bet.selectionName || bet.market}
                   {index === 0 && (
                     <motion.span
                       className="text-[10px] bg-gradient-to-r from-yellow-500 to-amber-400 text-dark-900 px-2 py-0.5 rounded-full font-bold"
@@ -1369,8 +1369,9 @@ const GroupedBets = ({ bets, maxInitialShow = 3 }) => {
                   <div className="px-3 pb-3 space-y-2">
                     {visibleBets.map((bet, betIndex) => {
                       const betKey = `${type}-${betIndex}`;
-                      const isOver = bet.market?.toLowerCase().includes('over') || bet.market?.toLowerCase().includes('yes');
-                      const isUnder = bet.market?.toLowerCase().includes('under') || bet.market?.toLowerCase().includes('no');
+                      const selectionStr = (bet.selection || bet.selectionName || bet.market || '').toLowerCase();
+                      const isOver = selectionStr.includes('over') || selectionStr.includes('yes');
+                      const isUnder = selectionStr.includes('under') || selectionStr.includes('no');
                       const isBetExpanded = expandedBets[betKey];
                       const ev10 = (bet.edge * 10).toFixed(2); // EV per €10 bet
 
@@ -1399,7 +1400,7 @@ const GroupedBets = ({ bets, maxInitialShow = 3 }) => {
                                 <div className="flex items-center gap-2">
                                   <span className="text-white font-medium">
                                     {bet.player && <span className="text-cyan-400">{bet.player}: </span>}
-                                    {bet.market}
+                                    {bet.selectionName || bet.market}
                                   </span>
                                   {betIndex === 0 && (
                                     <motion.span
