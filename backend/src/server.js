@@ -29,7 +29,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
     origin: process.env.NODE_ENV === 'production'
-      ? 'https://your-domain.com'
+      ? ['https://ev-statsbased.vercel.app', 'https://ev-statsbased-kridt.vercel.app']
       : ['http://localhost:5173', 'http://localhost:3000'],
     methods: ['GET', 'POST'],
   },
@@ -38,7 +38,7 @@ const io = new Server(httpServer, {
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-    ? 'https://your-domain.com'
+    ? ['https://ev-statsbased.vercel.app', 'https://ev-statsbased-kridt.vercel.app']
     : ['http://localhost:5173', 'http://localhost:3000'],
 }));
 app.use(express.json());
