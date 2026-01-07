@@ -32,7 +32,6 @@ export const OPTIC_ODDS_CONFIG = {
     'nordicbet',        // Kambi network
     'expekt',           // Kambi network
     'rizk',             // Kambi network
-    'coolbet',          // Kambi network
     // Smaller bookmakers
     'campobet',         // Smaller independent
     'betinia',          // Smaller bookmaker
@@ -60,7 +59,6 @@ export const OPTIC_ODDS_CONFIG = {
     'nordicbet',
     'expekt',
     'rizk',
-    'coolbet',
     // Smaller bookmakers
     'campobet',
     'betinia',
@@ -69,7 +67,7 @@ export const OPTIC_ODDS_CONFIG = {
   // Bookmaker networks for frontend filtering
   bookmakerNetworks: {
     independent: ['betano', 'bet365'],
-    kambi: ['unibet', 'unibet_(denmark)', 'leovegas', 'betsson', 'betsafe', 'nordicbet', 'expekt', 'rizk', 'coolbet'],
+    kambi: ['unibet', 'unibet_(denmark)', 'leovegas', 'betsson', 'betsafe', 'nordicbet', 'expekt', 'rizk'],
     other: ['campobet', 'betinia']
   },
 
@@ -85,7 +83,6 @@ export const OPTIC_ODDS_CONFIG = {
     'nordicbet': 'Nordicbet',
     'expekt': 'Expekt',
     'rizk': 'Rizk',
-    'coolbet': 'Coolbet',
     'campobet': 'Campobet',
     'betinia': 'Betinia',
   },

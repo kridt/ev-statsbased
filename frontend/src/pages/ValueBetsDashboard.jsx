@@ -148,7 +148,6 @@ const ALL_BOOKMAKERS = [
   { id: 'nordicbet', name: 'Nordicbet', category: 'playable', description: 'Kambi network', playable: true, network: 'Kambi' },
   { id: 'expekt', name: 'Expekt', category: 'playable', description: 'Kambi network', playable: true, network: 'Kambi' },
   { id: 'rizk', name: 'Rizk', category: 'playable', description: 'Kambi network', playable: true, network: 'Kambi' },
-  { id: 'coolbet', name: 'Coolbet', category: 'playable', description: 'Kambi network', playable: true, network: 'Kambi' },
 
   // Other playable bookmakers
   { id: 'campobet', name: 'Campobet', category: 'playable', description: 'Smaller bookmaker', playable: true, network: 'Other' },
@@ -1700,8 +1699,7 @@ export default function ValueBetsDashboard() {
             return bookmaker.includes('kambi') || bookmaker.includes('unibet') ||
                    bookmaker.includes('leovegas') || bookmaker.includes('betsson') ||
                    bookmaker.includes('betsafe') || bookmaker.includes('nordicbet') ||
-                   bookmaker.includes('expekt') || bookmaker.includes('rizk') ||
-                   bookmaker.includes('coolbet');
+                   bookmaker.includes('expekt') || bookmaker.includes('rizk');
           case 'custom':
             // Filter by individually selected bookmakers
             return selectedBookmakers.some(selected =>
