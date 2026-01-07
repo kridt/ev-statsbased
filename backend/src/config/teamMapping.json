@@ -1,0 +1,1299 @@
+{
+  "_comment": "Team mapping between SportMonks and Odds API. Key is SportMonks team ID, value contains Odds API ID and aliases for fuzzy matching",
+  "_lastUpdated": "2025-12-27",
+  "_stats": {
+    "matched": 174,
+    "unmatched": 0,
+    "total": 174,
+    "manualFixes": 51
+  },
+  "teams": {
+    "398": {
+      "oddsApiId": 2690,
+      "sportmonksName": "Parma",
+      "oddsApiName": "Parma Calcio",
+      "league": "Serie A",
+      "aliases": ["Parma", "Parma Calcio"]
+    },
+    "109": {
+      "oddsApiId": 697115,
+      "sportmonksName": "Fiorentina",
+      "oddsApiName": "Fiorentina SRL",
+      "league": "Serie A",
+      "aliases": ["Fiorentina", "Fiorentina SRL", "ACF Fiorentina"]
+    },
+    "345": {
+      "oddsApiId": 2735,
+      "sportmonksName": "Spezia",
+      "oddsApiName": "Spezia Calcio",
+      "league": "Serie B",
+      "aliases": ["Spezia", "Spezia Calcio"]
+    },
+    "1343": {
+      "oddsApiId": 2728,
+      "sportmonksName": "Pescara",
+      "oddsApiName": "Delfino Pescara",
+      "league": "Serie B",
+      "aliases": ["Pescara", "Delfino Pescara"]
+    },
+    "63": {
+      "oddsApiId": 14,
+      "sportmonksName": "Nottingham Forest",
+      "oddsApiName": "Nottingham Forest",
+      "league": "Premier League",
+      "aliases": ["Nottingham Forest", "Nottm Forest"]
+    },
+    "9": {
+      "oddsApiId": 17,
+      "sportmonksName": "Manchester City",
+      "oddsApiName": "Manchester City",
+      "league": "Premier League",
+      "aliases": ["Manchester City", "Man City"]
+    },
+    "66": {
+      "oddsApiId": 594930,
+      "sportmonksName": "Hibernian",
+      "oddsApiName": "Hibernian FC",
+      "league": "Premiership",
+      "aliases": ["Hibernian", "Hibernian FC", "Hibs"]
+    },
+    "314": {
+      "oddsApiId": 63,
+      "sportmonksName": "Hearts",
+      "oddsApiName": "Heart of Midlothian",
+      "league": "Premiership",
+      "aliases": ["Hearts", "Heart of Midlothian"],
+      "manualFix": true
+    },
+    "328": {
+      "oddsApiId": 2889,
+      "sportmonksName": "Antwerp",
+      "oddsApiName": "Royal Antwerp FC",
+      "league": "Pro League",
+      "aliases": ["Antwerp", "Royal Antwerp FC"]
+    },
+    "1118": {
+      "oddsApiId": 376100,
+      "sportmonksName": "Zulte-Waregem",
+      "oddsApiName": "SV Zulte Waregem",
+      "league": "Pro League",
+      "aliases": ["Zulte-Waregem", "SV Zulte Waregem"]
+    },
+    "268": {
+      "oddsApiId": 2704,
+      "sportmonksName": "Como",
+      "oddsApiName": "Como 1907",
+      "league": "Serie A",
+      "aliases": ["Como", "Como 1907"]
+    },
+    "7790": {
+      "oddsApiId": 2689,
+      "sportmonksName": "Lecce",
+      "oddsApiName": "US Lecce",
+      "league": "Serie A",
+      "aliases": ["Lecce", "US Lecce"]
+    },
+    "613": {
+      "oddsApiId": 2696,
+      "sportmonksName": "Torino",
+      "oddsApiName": "Torino FC",
+      "league": "Serie A",
+      "aliases": ["Torino", "Torino FC"]
+    },
+    "585": {
+      "oddsApiId": 697113,
+      "sportmonksName": "Cagliari",
+      "oddsApiName": "Cagliari SRL",
+      "league": "Serie A",
+      "aliases": ["Cagliari", "Cagliari SRL", "Cagliari Calcio"]
+    },
+    "6947": {
+      "oddsApiId": 5324,
+      "sportmonksName": "Juve Stabia",
+      "oddsApiName": "Juve Stabia",
+      "league": "Serie B",
+      "aliases": ["Juve Stabia"]
+    },
+    "176": {
+      "oddsApiId": 5886,
+      "sportmonksName": "Sudtirol",
+      "oddsApiName": "FC Sudtirol",
+      "league": "Serie B",
+      "aliases": ["Sudtirol", "FC Sudtirol"],
+      "manualFix": true
+    },
+    "267": {
+      "oddsApiId": 1278119,
+      "sportmonksName": "Venezia",
+      "oddsApiName": "Venezia",
+      "league": "Serie B",
+      "aliases": ["Venezia", "Venezia FC"]
+    },
+    "7818": {
+      "oddsApiId": 43680,
+      "sportmonksName": "Virtus Entella",
+      "oddsApiName": "Virtus Entella",
+      "league": "Serie B",
+      "aliases": ["Virtus Entella"]
+    },
+    "522": {
+      "oddsApiId": 826674,
+      "sportmonksName": "Sampdoria",
+      "oddsApiName": "Sampdoria Genoa",
+      "league": "Serie B",
+      "aliases": ["Sampdoria", "Sampdoria Genoa", "UC Sampdoria"]
+    },
+    "2892": {
+      "oddsApiId": 395630,
+      "sportmonksName": "Reggiana",
+      "oddsApiName": "AC Reggiana 1919",
+      "league": "Serie B",
+      "aliases": ["Reggiana", "AC Reggiana 1919"]
+    },
+    "7766": {
+      "oddsApiId": 2745,
+      "sportmonksName": "Carrarese",
+      "oddsApiName": "Carrarese Calcio",
+      "league": "Serie B",
+      "aliases": ["Carrarese", "Carrarese Calcio"]
+    },
+    "10771": {
+      "oddsApiId": 2770,
+      "sportmonksName": "Mantova",
+      "oddsApiName": "Mantova 1911",
+      "league": "Serie B",
+      "aliases": ["Mantova", "Mantova 1911"]
+    },
+    "7471": {
+      "oddsApiId": 2796,
+      "sportmonksName": "Catanzaro",
+      "oddsApiName": "US Catanzaro",
+      "league": "Serie B",
+      "aliases": ["Catanzaro", "US Catanzaro"]
+    },
+    "1234": {
+      "oddsApiId": 2742,
+      "sportmonksName": "Cesena",
+      "oddsApiName": "Cesena FC",
+      "league": "Serie B",
+      "aliases": ["Cesena", "Cesena FC"]
+    },
+    "397": {
+      "oddsApiId": 79045,
+      "sportmonksName": "Empoli",
+      "oddsApiName": "Empoli FC",
+      "league": "Serie B",
+      "aliases": ["Empoli", "Empoli FC"]
+    },
+    "4070": {
+      "oddsApiId": 1278121,
+      "sportmonksName": "Frosinone",
+      "oddsApiName": "Frosinone",
+      "league": "Serie B",
+      "aliases": ["Frosinone", "Frosinone Calcio"]
+    },
+    "78": {
+      "oddsApiId": 30,
+      "sportmonksName": "Brighton & Hove Albion",
+      "oddsApiName": "Brighton & Hove Albion",
+      "league": "Premier League",
+      "aliases": ["Brighton & Hove Albion", "Brighton"]
+    },
+    "19": {
+      "oddsApiId": 90120,
+      "sportmonksName": "Arsenal",
+      "oddsApiName": "Arsenal FC",
+      "league": "Premier League",
+      "aliases": ["Arsenal", "Arsenal FC"]
+    },
+    "236": {
+      "oddsApiId": 959123,
+      "sportmonksName": "Brentford",
+      "oddsApiName": "Brentford",
+      "league": "Premier League",
+      "aliases": ["Brentford", "Brentford FC"]
+    },
+    "52": {
+      "oddsApiId": 60,
+      "sportmonksName": "AFC Bournemouth",
+      "oddsApiName": "AFC Bournemouth",
+      "league": "Premier League",
+      "aliases": ["AFC Bournemouth", "Bournemouth"]
+    },
+    "27": {
+      "oddsApiId": 6,
+      "sportmonksName": "Burnley",
+      "oddsApiName": "Burnley FC",
+      "league": "Premier League",
+      "aliases": ["Burnley", "Burnley FC"]
+    },
+    "13": {
+      "oddsApiId": 36704,
+      "sportmonksName": "Everton",
+      "oddsApiName": "Everton FC",
+      "league": "Premier League",
+      "aliases": ["Everton", "Everton FC"]
+    },
+    "8": {
+      "oddsApiId": 90134,
+      "sportmonksName": "Liverpool",
+      "oddsApiName": "Liverpool",
+      "league": "Premier League",
+      "aliases": ["Liverpool", "Liverpool FC"]
+    },
+    "29": {
+      "oddsApiId": 3,
+      "sportmonksName": "Wolverhampton Wanderers",
+      "oddsApiName": "Wolverhampton Wanderers",
+      "league": "Premier League",
+      "aliases": ["Wolverhampton Wanderers", "Wolves"]
+    },
+    "11": {
+      "oddsApiId": 36548,
+      "sportmonksName": "Fulham",
+      "oddsApiName": "Fulham FC",
+      "league": "Premier League",
+      "aliases": ["Fulham", "Fulham FC"]
+    },
+    "1": {
+      "oddsApiId": 37,
+      "sportmonksName": "West Ham United",
+      "oddsApiName": "West Ham United",
+      "league": "Premier League",
+      "aliases": ["West Ham United", "West Ham"]
+    },
+    "284": {
+      "oddsApiId": 2357,
+      "sportmonksName": "Dundee",
+      "oddsApiName": "Dundee FC",
+      "league": "Premiership",
+      "aliases": ["Dundee", "Dundee FC"]
+    },
+    "770": {
+      "oddsApiId": 2363,
+      "sportmonksName": "Falkirk",
+      "oddsApiName": "Falkirk FC",
+      "league": "Premiership",
+      "aliases": ["Falkirk", "Falkirk FC"]
+    },
+    "258": {
+      "oddsApiId": 2356,
+      "sportmonksName": "Livingston",
+      "oddsApiName": "Livingston FC",
+      "league": "Premiership",
+      "aliases": ["Livingston", "Livingston FC"]
+    },
+    "53": {
+      "oddsApiId": 64,
+      "sportmonksName": "Celtic",
+      "oddsApiName": "Celtic FC",
+      "league": "Premiership",
+      "aliases": ["Celtic", "Celtic FC", "Celtic Glasgow"],
+      "manualFix": true
+    },
+    "62": {
+      "oddsApiId": 5965,
+      "sportmonksName": "Rangers",
+      "oddsApiName": "FC Rangers",
+      "league": "Premiership",
+      "aliases": ["Rangers", "FC Rangers", "Glasgow Rangers"]
+    },
+    "309": {
+      "oddsApiId": 2346,
+      "sportmonksName": "Motherwell",
+      "oddsApiName": "Motherwell FC",
+      "league": "Premiership",
+      "aliases": ["Motherwell", "Motherwell FC"]
+    },
+    "180": {
+      "oddsApiId": 2347,
+      "sportmonksName": "Kilmarnock",
+      "oddsApiName": "Kilmarnock FC",
+      "league": "Premiership",
+      "aliases": ["Kilmarnock", "Kilmarnock FC"]
+    },
+    "496": {
+      "oddsApiId": 2359,
+      "sportmonksName": "St. Mirren",
+      "oddsApiName": "St Mirren FC",
+      "league": "Premiership",
+      "aliases": ["St. Mirren", "St Mirren FC"]
+    },
+    "6722": {
+      "oddsApiId": 3035,
+      "sportmonksName": "La Louviere",
+      "oddsApiName": "RAAL La Louviere",
+      "league": "Pro League",
+      "aliases": ["La Louviere", "RAAL La Louviere"],
+      "manualFix": true
+    },
+    "1216": {
+      "oddsApiId": 64119,
+      "sportmonksName": "Palermo",
+      "oddsApiName": "Palermo FC",
+      "league": "Serie B",
+      "aliases": ["Palermo", "Palermo FC"]
+    },
+    "249160": {
+      "oddsApiId": 79055,
+      "sportmonksName": "Calcio Padova",
+      "oddsApiName": "Calcio Padova",
+      "league": "Serie B",
+      "aliases": ["Calcio Padova", "Padova"]
+    },
+    "43": {
+      "oddsApiId": 1175371,
+      "sportmonksName": "Lazio",
+      "oddsApiName": "SS Lazio",
+      "league": "Serie A",
+      "aliases": ["Lazio", "SS Lazio", "Lazio Rome"]
+    },
+    "346": {
+      "oddsApiId": 2695,
+      "sportmonksName": "Udinese",
+      "oddsApiName": "Udinese Calcio",
+      "league": "Serie A",
+      "aliases": ["Udinese", "Udinese Calcio"]
+    },
+    "113": {
+      "oddsApiId": 502832,
+      "sportmonksName": "Milan",
+      "oddsApiName": "AC Milan",
+      "league": "Serie A",
+      "aliases": ["Milan", "AC Milan", "A.C. Milan"]
+    },
+    "1123": {
+      "oddsApiId": 1175361,
+      "sportmonksName": "Hellas Verona",
+      "oddsApiName": "Hellas Verona",
+      "league": "Serie A",
+      "aliases": ["Hellas Verona", "Verona"]
+    },
+    "597": {
+      "oddsApiId": 2714,
+      "sportmonksName": "Napoli",
+      "oddsApiName": "SSC Napoli",
+      "league": "Serie A",
+      "aliases": ["Napoli", "SSC Napoli"]
+    },
+    "10722": {
+      "oddsApiId": 1175375,
+      "sportmonksName": "Cremonese",
+      "oddsApiName": "US Cremonese",
+      "league": "Serie A",
+      "aliases": ["Cremonese", "US Cremonese"]
+    },
+    "71": {
+      "oddsApiId": 217974,
+      "sportmonksName": "Leeds United",
+      "oddsApiName": "Leeds United",
+      "league": "Premier League",
+      "aliases": ["Leeds United", "Leeds"]
+    },
+    "3": {
+      "oddsApiId": 36546,
+      "sportmonksName": "Sunderland",
+      "oddsApiName": "Sunderland",
+      "league": "Premier League",
+      "aliases": ["Sunderland", "Sunderland AFC"]
+    },
+    "11741": {
+      "oddsApiId": 36365,
+      "sportmonksName": "Casa Pia",
+      "oddsApiName": "Casa Pia Lisbon",
+      "league": "Liga Portugal",
+      "aliases": ["Casa Pia", "Casa Pia Lisbon"]
+    },
+    "830": {
+      "oddsApiId": 78131,
+      "sportmonksName": "Vitoria Guimaraes",
+      "oddsApiName": "Vitoria Guimaraes",
+      "league": "Liga Portugal",
+      "aliases": ["Vitoria Guimaraes", "Vitoria SC"]
+    },
+    "4092": {
+      "oddsApiId": 25777,
+      "sportmonksName": "Arouca",
+      "oddsApiName": "FC Arouca",
+      "league": "Liga Portugal",
+      "aliases": ["Arouca", "FC Arouca"]
+    },
+    "364": {
+      "oddsApiId": 169138,
+      "sportmonksName": "Gil Vicente",
+      "oddsApiName": "Gil Vicente",
+      "league": "Liga Portugal",
+      "aliases": ["Gil Vicente", "Gil Vicente FC"]
+    },
+    "51": {
+      "oddsApiId": 7,
+      "sportmonksName": "Crystal Palace",
+      "oddsApiName": "Crystal Palace",
+      "league": "Premier League",
+      "aliases": ["Crystal Palace"]
+    },
+    "6": {
+      "oddsApiId": 90146,
+      "sportmonksName": "Tottenham Hotspur",
+      "oddsApiName": "Tottenham Hotspur",
+      "league": "Premier League",
+      "aliases": ["Tottenham Hotspur", "Tottenham", "Spurs"]
+    },
+    "8513": {
+      "oddsApiId": 2685,
+      "sportmonksName": "Bologna",
+      "oddsApiName": "Bologna FC",
+      "league": "Serie A",
+      "aliases": ["Bologna", "Bologna FC"]
+    },
+    "2714": {
+      "oddsApiId": 377720,
+      "sportmonksName": "Sassuolo",
+      "oddsApiName": "Sassuolo Calcio",
+      "league": "Serie A",
+      "aliases": ["Sassuolo", "Sassuolo Calcio"]
+    },
+    "884": {
+      "oddsApiId": 452091,
+      "sportmonksName": "Sporting Braga",
+      "oddsApiName": "Sporting Braga",
+      "league": "Liga Portugal",
+      "aliases": ["Sporting Braga", "SC Braga", "Braga"]
+    },
+    "605": {
+      "oddsApiId": 211930,
+      "sportmonksName": "Benfica",
+      "oddsApiName": "CF Benfica",
+      "league": "Liga Portugal",
+      "aliases": ["Benfica", "CF Benfica", "SL Benfica"]
+    },
+    "708": {
+      "oddsApiId": 72070,
+      "sportmonksName": "Atalanta",
+      "oddsApiName": "Atalanta BC",
+      "league": "Serie A",
+      "aliases": ["Atalanta", "Atalanta BC"]
+    },
+    "2930": {
+      "oddsApiId": 2697,
+      "sportmonksName": "Inter",
+      "oddsApiName": "Inter Milano",
+      "league": "Serie A",
+      "aliases": ["Inter", "Inter Milano", "Inter Milan", "Internazionale"],
+      "manualFix": true
+    },
+    "58": {
+      "oddsApiId": 78151,
+      "sportmonksName": "Sporting CP",
+      "oddsApiName": "Sporting CP",
+      "league": "Liga Portugal",
+      "aliases": ["Sporting CP", "Sporting Lisbon"]
+    },
+    "6377": {
+      "oddsApiId": 452101,
+      "sportmonksName": "Rio Ave",
+      "oddsApiName": "Rio Ave",
+      "league": "Liga Portugal",
+      "aliases": ["Rio Ave", "Rio Ave FC"]
+    },
+    "117": {
+      "oddsApiId": 11,
+      "sportmonksName": "Coventry City",
+      "oddsApiName": "Coventry City",
+      "league": "Championship",
+      "aliases": ["Coventry City", "Coventry"]
+    },
+    "116": {
+      "oddsApiId": 32,
+      "sportmonksName": "Ipswich Town",
+      "oddsApiName": "Ipswich Town",
+      "league": "Championship",
+      "aliases": ["Ipswich Town", "Ipswich"]
+    },
+    "37": {
+      "oddsApiId": 509432,
+      "sportmonksName": "Roma",
+      "oddsApiName": "AS Roma",
+      "league": "Serie A",
+      "aliases": ["Roma", "AS Roma"]
+    },
+    "102": {
+      "oddsApiId": 2713,
+      "sportmonksName": "Genoa",
+      "oddsApiName": "Genoa CFC",
+      "league": "Serie A",
+      "aliases": ["Genoa", "Genoa CFC"]
+    },
+    "42": {
+      "oddsApiId": 110507,
+      "sportmonksName": "Leicester City",
+      "oddsApiName": "Leicester City",
+      "league": "Championship",
+      "aliases": ["Leicester City", "Leicester"]
+    },
+    "24": {
+      "oddsApiId": 27,
+      "sportmonksName": "Derby County",
+      "oddsApiName": "Derby County",
+      "league": "Championship",
+      "aliases": ["Derby County", "Derby"]
+    },
+    "7": {
+      "oddsApiId": 36,
+      "sportmonksName": "Middlesbrough",
+      "oddsApiName": "Middlesbrough FC",
+      "league": "Championship",
+      "aliases": ["Middlesbrough", "Middlesbrough FC", "Boro"]
+    },
+    "22": {
+      "oddsApiId": 36540,
+      "sportmonksName": "Hull City",
+      "oddsApiName": "Hull City",
+      "league": "Championship",
+      "aliases": ["Hull City", "Hull"]
+    },
+    "64": {
+      "oddsApiId": 552679,
+      "sportmonksName": "Millwall",
+      "oddsApiName": "Millwall",
+      "league": "Championship",
+      "aliases": ["Millwall", "Millwall FC"]
+    },
+    "122": {
+      "oddsApiId": 58,
+      "sportmonksName": "Bristol City",
+      "oddsApiName": "Bristol City",
+      "league": "Championship",
+      "aliases": ["Bristol City"]
+    },
+    "33": {
+      "oddsApiId": 263,
+      "sportmonksName": "Norwich City",
+      "oddsApiName": "Norwich City",
+      "league": "Championship",
+      "aliases": ["Norwich City", "Norwich"]
+    },
+    "25": {
+      "oddsApiId": 77863,
+      "sportmonksName": "Watford",
+      "oddsApiName": "Watford FC",
+      "league": "Championship",
+      "aliases": ["Watford", "Watford FC"]
+    },
+    "30": {
+      "oddsApiId": 54369,
+      "sportmonksName": "Swansea City",
+      "oddsApiName": "Swansea City",
+      "league": "Championship",
+      "aliases": ["Swansea City", "Swansea"]
+    },
+    "297": {
+      "oddsApiId": 95,
+      "sportmonksName": "Oxford United",
+      "oddsApiName": "Oxford United",
+      "league": "Championship",
+      "aliases": ["Oxford United", "Oxford"]
+    },
+    "4": {
+      "oddsApiId": 47,
+      "sportmonksName": "Charlton Athletic",
+      "oddsApiName": "Charlton Athletic",
+      "league": "Championship",
+      "aliases": ["Charlton Athletic", "Charlton"]
+    },
+    "5": {
+      "oddsApiId": 2,
+      "sportmonksName": "Portsmouth",
+      "oddsApiName": "Portsmouth FC",
+      "league": "Championship",
+      "aliases": ["Portsmouth", "Portsmouth FC", "Pompey"]
+    },
+    "2": {
+      "oddsApiId": 36543,
+      "sportmonksName": "Blackburn Rovers",
+      "oddsApiName": "Blackburn Rovers",
+      "league": "Championship",
+      "aliases": ["Blackburn Rovers", "Blackburn"]
+    },
+    "56": {
+      "oddsApiId": 12,
+      "sportmonksName": "Sheffield Wednesday",
+      "oddsApiName": "Sheffield Wednesday",
+      "league": "Championship",
+      "aliases": ["Sheffield Wednesday", "Sheffield Wed"]
+    },
+    "26": {
+      "oddsApiId": 29,
+      "sportmonksName": "Stoke City",
+      "oddsApiName": "Stoke City",
+      "league": "Championship",
+      "aliases": ["Stoke City", "Stoke"]
+    },
+    "21": {
+      "oddsApiId": 218350,
+      "sportmonksName": "Sheffield United",
+      "oddsApiName": "Sheffield United",
+      "league": "Championship",
+      "aliases": ["Sheffield United", "Sheffield Utd"]
+    },
+    "47": {
+      "oddsApiId": 544535,
+      "sportmonksName": "Queens Park Rangers",
+      "oddsApiName": "Queens Park Rangers",
+      "league": "Championship",
+      "aliases": ["Queens Park Rangers", "QPR"]
+    },
+    "10": {
+      "oddsApiId": 43510,
+      "sportmonksName": "West Bromwich Albion",
+      "oddsApiName": "West Bromwich Albion",
+      "league": "Championship",
+      "aliases": ["West Bromwich Albion", "West Brom", "WBA"]
+    },
+    "99": {
+      "oddsApiId": 21,
+      "sportmonksName": "Preston North End",
+      "oddsApiName": "Preston North End",
+      "league": "Championship",
+      "aliases": ["Preston North End", "Preston"]
+    },
+    "283": {
+      "oddsApiId": 64,
+      "sportmonksName": "Wrexham",
+      "oddsApiName": "Wrexham AFC",
+      "league": "Championship",
+      "aliases": ["Wrexham", "Wrexham AFC"]
+    },
+    "12": {
+      "oddsApiId": 9,
+      "sportmonksName": "Birmingham City",
+      "oddsApiName": "Birmingham City",
+      "league": "Championship",
+      "aliases": ["Birmingham City", "Birmingham"]
+    },
+    "65": {
+      "oddsApiId": 45,
+      "sportmonksName": "Southampton",
+      "oddsApiName": "Southampton FC",
+      "league": "Championship",
+      "aliases": ["Southampton", "Southampton FC"]
+    },
+    "652": {
+      "oddsApiId": 78117,
+      "sportmonksName": "Porto",
+      "oddsApiName": "FC Porto",
+      "league": "Liga Portugal",
+      "aliases": ["Porto", "FC Porto"]
+    },
+    "269225": {
+      "oddsApiId": 1031053,
+      "sportmonksName": "AVS",
+      "oddsApiName": "AVS Futebol SAD",
+      "league": "Liga Portugal",
+      "aliases": ["AVS", "AVS Futebol SAD"]
+    },
+    "20": {
+      "oddsApiId": 1055101,
+      "sportmonksName": "Newcastle United",
+      "oddsApiName": "Newcastle United",
+      "league": "Premier League",
+      "aliases": ["Newcastle United", "Newcastle"]
+    },
+    "18": {
+      "oddsApiId": 90124,
+      "sportmonksName": "Chelsea",
+      "oddsApiName": "Chelsea FC",
+      "league": "Premier League",
+      "aliases": ["Chelsea", "Chelsea FC"]
+    },
+    "273": {
+      "oddsApiId": 2355,
+      "sportmonksName": "Aberdeen",
+      "oddsApiName": "Aberdeen FC",
+      "league": "Premiership",
+      "aliases": ["Aberdeen", "Aberdeen FC"]
+    },
+    "282": {
+      "oddsApiId": 2349,
+      "sportmonksName": "Dundee United",
+      "oddsApiName": "Dundee United",
+      "league": "Premiership",
+      "aliases": ["Dundee United"]
+    },
+    "15": {
+      "oddsApiId": 40,
+      "sportmonksName": "Aston Villa",
+      "oddsApiName": "Aston Villa",
+      "league": "Premier League",
+      "aliases": ["Aston Villa", "Villa"]
+    },
+    "14": {
+      "oddsApiId": 35,
+      "sportmonksName": "Manchester United",
+      "oddsApiName": "Manchester United",
+      "league": "Premier League",
+      "aliases": ["Manchester United", "Man United", "Man Utd"]
+    },
+    "60": {
+      "oddsApiId": 562732,
+      "sportmonksName": "SD Eibar",
+      "oddsApiName": "SD Eibar",
+      "league": "La Liga 2",
+      "aliases": ["SD Eibar", "Eibar"]
+    },
+    "6968": {
+      "oddsApiId": 5900,
+      "sportmonksName": "Mirandes",
+      "oddsApiName": "CD Mirandes",
+      "league": "La Liga 2",
+      "aliases": ["Mirandes", "CD Mirandes"],
+      "manualFix": true
+    },
+    "289": {
+      "oddsApiId": 1681,
+      "sportmonksName": "Toulouse",
+      "oddsApiName": "Toulouse FC",
+      "league": "Ligue 1",
+      "aliases": ["Toulouse", "Toulouse FC"]
+    },
+    "271": {
+      "oddsApiId": 159,
+      "sportmonksName": "Lens",
+      "oddsApiName": "RC Lens",
+      "league": "Ligue 1",
+      "aliases": ["Lens", "RC Lens"],
+      "manualFix": true
+    },
+    "377": {
+      "oddsApiId": 825968,
+      "sportmonksName": "Rayo Vallecano",
+      "oddsApiName": "Rayo Vallecano",
+      "league": "La Liga",
+      "aliases": ["Rayo Vallecano"]
+    },
+    "106": {
+      "oddsApiId": 2859,
+      "sportmonksName": "Getafe",
+      "oddsApiName": "Getafe CF",
+      "league": "La Liga",
+      "aliases": ["Getafe", "Getafe CF"]
+    },
+    "7035": {
+      "oddsApiId": 186,
+      "sportmonksName": "Nacional",
+      "oddsApiName": "CD Nacional",
+      "league": "Liga Portugal",
+      "aliases": ["Nacional", "CD Nacional"],
+      "manualFix": true
+    },
+    "36": {
+      "oddsApiId": 154820,
+      "sportmonksName": "Celta de Vigo",
+      "oddsApiName": "RC Celta de Vigo",
+      "league": "La Liga",
+      "aliases": ["Celta de Vigo", "RC Celta de Vigo", "Celta Vigo"]
+    },
+    "214": {
+      "oddsApiId": 222406,
+      "sportmonksName": "Valencia",
+      "oddsApiName": "CF Valencia",
+      "league": "La Liga",
+      "aliases": ["Valencia", "CF Valencia", "Valencia CF"]
+    },
+    "11354": {
+      "oddsApiId": 2868,
+      "sportmonksName": "Cultural Leonesa",
+      "oddsApiName": "Cultural Leonesa",
+      "league": "La Liga 2",
+      "aliases": ["Cultural Leonesa"]
+    },
+    "9656": {
+      "oddsApiId": 306254,
+      "sportmonksName": "Real Sociedad II",
+      "oddsApiName": "Real Sociedad C",
+      "league": "La Liga 2",
+      "aliases": ["Real Sociedad II", "Real Sociedad C", "Real Sociedad B"]
+    },
+    "1072": {
+      "oddsApiId": 2737,
+      "sportmonksName": "Pisa",
+      "oddsApiName": "Pisa SC",
+      "league": "Serie A",
+      "aliases": ["Pisa", "Pisa SC"]
+    },
+    "459": {
+      "oddsApiId": 333015,
+      "sportmonksName": "Osasuna",
+      "oddsApiName": "CA Osasuna",
+      "league": "La Liga",
+      "aliases": ["Osasuna", "CA Osasuna"]
+    },
+    "13258": {
+      "oddsApiId": 215,
+      "sportmonksName": "Athletic Club",
+      "oddsApiName": "Athletic Bilbao",
+      "league": "La Liga",
+      "aliases": ["Athletic Club", "Athletic Bilbao"],
+      "manualFix": true
+    },
+    "618": {
+      "oddsApiId": 234,
+      "sportmonksName": "Almeria",
+      "oddsApiName": "UD Almeria",
+      "league": "La Liga 2",
+      "aliases": ["Almeria", "UD Almeria"],
+      "manualFix": true
+    },
+    "103": {
+      "oddsApiId": 114819,
+      "sportmonksName": "Granada",
+      "oddsApiName": "Granada CF",
+      "league": "La Liga 2",
+      "aliases": ["Granada", "Granada CF"]
+    },
+    "10008": {
+      "oddsApiId": 5912,
+      "sportmonksName": "Castellon",
+      "oddsApiName": "CD Castellon",
+      "league": "La Liga 2",
+      "aliases": ["Castellon", "CD Castellon"],
+      "manualFix": true
+    },
+    "274": {
+      "oddsApiId": 24265,
+      "sportmonksName": "Huesca",
+      "oddsApiName": "SD Huesca",
+      "league": "La Liga 2",
+      "aliases": ["Huesca", "SD Huesca"]
+    },
+    "3497": {
+      "oddsApiId": 218180,
+      "sportmonksName": "Tondela",
+      "oddsApiName": "CD Tondela",
+      "league": "Liga Portugal",
+      "aliases": ["Tondela", "CD Tondela"]
+    },
+    "6789": {
+      "oddsApiId": 161,
+      "sportmonksName": "Monaco",
+      "oddsApiName": "AS Monaco",
+      "league": "Ligue 1",
+      "aliases": ["Monaco", "AS Monaco"],
+      "manualFix": true
+    },
+    "79": {
+      "oddsApiId": 1649,
+      "sportmonksName": "Olympique Lyonnais",
+      "oddsApiName": "Olympique Lyon",
+      "league": "Ligue 1",
+      "aliases": ["Olympique Lyonnais", "Olympique Lyon", "Lyon"]
+    },
+    "625": {
+      "oddsApiId": 2687,
+      "sportmonksName": "Juventus",
+      "oddsApiName": "Juventus Turin",
+      "league": "Serie A",
+      "aliases": ["Juventus", "Juventus Turin", "Juve"],
+      "manualFix": true
+    },
+    "1099": {
+      "oddsApiId": 744323,
+      "sportmonksName": "Elche",
+      "oddsApiName": "CF Elche",
+      "league": "La Liga",
+      "aliases": ["Elche", "CF Elche"]
+    },
+    "3477": {
+      "oddsApiId": 384698,
+      "sportmonksName": "Villarreal",
+      "oddsApiName": "Villarreal CF",
+      "league": "La Liga",
+      "aliases": ["Villarreal", "Villarreal CF"]
+    },
+    "9818": {
+      "oddsApiId": 2835,
+      "sportmonksName": "Racing Santander",
+      "oddsApiName": "Racing Santander",
+      "league": "La Liga 2",
+      "aliases": ["Racing Santander", "Racing de Santander"]
+    },
+    "361": {
+      "oddsApiId": 2831,
+      "sportmonksName": "Real Valladolid",
+      "oddsApiName": "Real Valladolid",
+      "league": "La Liga 2",
+      "aliases": ["Real Valladolid", "Valladolid"]
+    },
+    "450": {
+      "oddsApiId": 160,
+      "sportmonksName": "Nice",
+      "oddsApiName": "OGC Nice",
+      "league": "Ligue 1",
+      "aliases": ["Nice", "OGC Nice"],
+      "manualFix": true
+    },
+    "686": {
+      "oddsApiId": 163,
+      "sportmonksName": "Strasbourg",
+      "oddsApiName": "RC Strasbourg",
+      "league": "Ligue 1",
+      "aliases": ["Strasbourg", "RC Strasbourg"],
+      "manualFix": true
+    },
+    "12152": {
+      "oddsApiId": 926675,
+      "sportmonksName": "Estrela Amadora",
+      "oddsApiName": "Estrela Amadora",
+      "league": "Liga Portugal",
+      "aliases": ["Estrela Amadora"]
+    },
+    "676": {
+      "oddsApiId": 77903,
+      "sportmonksName": "Sevilla",
+      "oddsApiName": "Sevilla FC",
+      "league": "La Liga",
+      "aliases": ["Sevilla", "Sevilla FC"]
+    },
+    "3457": {
+      "oddsApiId": 221,
+      "sportmonksName": "Levante",
+      "oddsApiName": "Levante UD",
+      "league": "La Liga",
+      "aliases": ["Levante", "Levante UD"],
+      "manualFix": true
+    },
+    "344": {
+      "oddsApiId": 5899,
+      "sportmonksName": "Sporting Gijon",
+      "oddsApiName": "Sporting Gijon",
+      "league": "La Liga 2",
+      "aliases": ["Sporting Gijon", "Real Sporting"],
+      "manualFix": true
+    },
+    "126": {
+      "oddsApiId": 233,
+      "sportmonksName": "Malaga",
+      "oddsApiName": "Malaga CF",
+      "league": "La Liga 2",
+      "aliases": ["Malaga", "Malaga CF"],
+      "manualFix": true
+    },
+    "59": {
+      "oddsApiId": 518484,
+      "sportmonksName": "Nantes",
+      "oddsApiName": "FC Nantes",
+      "league": "Ligue 1",
+      "aliases": ["Nantes", "FC Nantes"]
+    },
+    "44": {
+      "oddsApiId": 1641,
+      "sportmonksName": "Olympique Marseille",
+      "oddsApiName": "Olympique Marseille",
+      "league": "Ligue 1",
+      "aliases": ["Olympique Marseille", "Marseille", "OM"]
+    },
+    "3468": {
+      "oddsApiId": 522312,
+      "sportmonksName": "Real Madrid",
+      "oddsApiName": "Real Madrid",
+      "league": "La Liga",
+      "aliases": ["Real Madrid", "Real Madrid CF"]
+    },
+    "485": {
+      "oddsApiId": 220,
+      "sportmonksName": "Real Betis",
+      "oddsApiName": "Real Betis",
+      "league": "La Liga",
+      "aliases": ["Real Betis", "Real Betis Balompie"],
+      "manualFix": true
+    },
+    "12330": {
+      "oddsApiId": 2869,
+      "sportmonksName": "Ceuta",
+      "oddsApiName": "AD Ceuta",
+      "league": "La Liga 2",
+      "aliases": ["Ceuta", "AD Ceuta"]
+    },
+    "238115": {
+      "oddsApiId": 54131,
+      "sportmonksName": "FC Andorra",
+      "oddsApiName": "Andorra CF",
+      "league": "La Liga 2",
+      "aliases": ["FC Andorra", "Andorra CF"]
+    },
+    "1055": {
+      "oddsApiId": 561522,
+      "sportmonksName": "Le Havre",
+      "oddsApiName": "Le Havre AC",
+      "league": "Ligue 1",
+      "aliases": ["Le Havre", "Le Havre AC"]
+    },
+    "776": {
+      "oddsApiId": 1684,
+      "sportmonksName": "Angers SCO",
+      "oddsApiName": "Angers SCO",
+      "league": "Ligue 1",
+      "aliases": ["Angers SCO", "Angers"]
+    },
+    "1947": {
+      "oddsApiId": 3030,
+      "sportmonksName": "Oud-Heverlee Leuven",
+      "oddsApiName": "Oud-Heverlee Leuven",
+      "league": "Pro League",
+      "aliases": ["Oud-Heverlee Leuven", "OH Leuven"],
+      "manualFix": true
+    },
+    "85": {
+      "oddsApiId": 2817,
+      "sportmonksName": "Barcelona",
+      "oddsApiName": "FC Barcelona",
+      "league": "La Liga",
+      "aliases": ["Barcelona", "FC Barcelona", "Barca"],
+      "manualFix": true
+    },
+    "86": {
+      "oddsApiId": 2836,
+      "sportmonksName": "Atletico Madrid",
+      "oddsApiName": "Atletico Madrid",
+      "league": "La Liga",
+      "aliases": ["Atletico Madrid", "Atletico", "Atleti"],
+      "manualFix": true
+    },
+    "287": {
+      "oddsApiId": 2824,
+      "sportmonksName": "Real Sociedad",
+      "oddsApiName": "Real Sociedad San Sebastian",
+      "league": "La Liga",
+      "aliases": ["Real Sociedad", "Real Sociedad San Sebastian", "La Real"],
+      "manualFix": true
+    },
+    "50": {
+      "oddsApiId": 2672,
+      "sportmonksName": "Bayern Munich",
+      "oddsApiName": "Bayern Munich",
+      "league": "Bundesliga",
+      "aliases": ["Bayern Munich", "Bayern", "FC Bayern"],
+      "manualFix": true
+    },
+    "503": {
+      "oddsApiId": 2673,
+      "sportmonksName": "Borussia Dortmund",
+      "oddsApiName": "Borussia Dortmund",
+      "league": "Bundesliga",
+      "aliases": ["Borussia Dortmund", "Dortmund", "BVB"],
+      "manualFix": true
+    },
+    "721": {
+      "oddsApiId": 2681,
+      "sportmonksName": "Bayer Leverkusen",
+      "oddsApiName": "Bayer Leverkusen",
+      "league": "Bundesliga",
+      "aliases": ["Bayer Leverkusen", "Leverkusen", "Bayer 04"],
+      "manualFix": true
+    },
+    "2726": {
+      "oddsApiId": 36360,
+      "sportmonksName": "RB Leipzig",
+      "oddsApiName": "RB Leipzig",
+      "league": "Bundesliga",
+      "aliases": ["RB Leipzig", "Leipzig", "RasenBallsport Leipzig"],
+      "manualFix": true
+    },
+    "635": {
+      "oddsApiId": 1644,
+      "sportmonksName": "Paris Saint-Germain",
+      "oddsApiName": "Paris Saint-Germain",
+      "league": "Ligue 1",
+      "aliases": ["Paris Saint-Germain", "PSG", "Paris SG"],
+      "manualFix": true
+    },
+    "648": {
+      "oddsApiId": 1643,
+      "sportmonksName": "Lille",
+      "oddsApiName": "Lille OSC",
+      "league": "Ligue 1",
+      "aliases": ["Lille", "Lille OSC", "LOSC"],
+      "manualFix": true
+    },
+    "1082": {
+      "oddsApiId": 1715,
+      "sportmonksName": "Brest",
+      "oddsApiName": "Stade Brest 29",
+      "league": "Ligue 1",
+      "aliases": ["Brest", "Stade Brest 29", "Stade Brestois"],
+      "manualFix": true
+    },
+    "1063": {
+      "oddsApiId": 1658,
+      "sportmonksName": "Rennes",
+      "oddsApiName": "Stade Rennais FC",
+      "league": "Ligue 1",
+      "aliases": ["Rennes", "Stade Rennais FC", "Stade Rennais"],
+      "manualFix": true
+    },
+    "86": {
+      "oddsApiId": 2814,
+      "sportmonksName": "Espanyol",
+      "oddsApiName": "Espanyol Barcelona",
+      "league": "La Liga",
+      "aliases": ["Espanyol", "Espanyol Barcelona", "RCD Espanyol"],
+      "manualFix": true
+    },
+    "93": {
+      "oddsApiId": 2885,
+      "sportmonksName": "Alaves",
+      "oddsApiName": "Deportivo Alaves",
+      "league": "La Liga",
+      "aliases": ["Alaves", "Deportivo Alaves"],
+      "manualFix": true
+    },
+    "231": {
+      "oddsApiId": 2826,
+      "sportmonksName": "Mallorca",
+      "oddsApiName": "RCD Mallorca",
+      "league": "La Liga",
+      "aliases": ["Mallorca", "RCD Mallorca", "Real Mallorca"],
+      "manualFix": true
+    },
+    "2833": {
+      "oddsApiId": 24264,
+      "sportmonksName": "Girona",
+      "oddsApiName": "Girona FC",
+      "league": "La Liga",
+      "aliases": ["Girona", "Girona FC"],
+      "manualFix": true
+    },
+    "458": {
+      "oddsApiId": 2851,
+      "sportmonksName": "Real Oviedo",
+      "oddsApiName": "Real Oviedo",
+      "league": "La Liga 2",
+      "aliases": ["Real Oviedo", "Oviedo"],
+      "manualFix": true
+    },
+    "347": {
+      "oddsApiId": 2674,
+      "sportmonksName": "Eintracht Frankfurt",
+      "oddsApiName": "Eintracht Frankfurt",
+      "league": "Bundesliga",
+      "aliases": ["Eintracht Frankfurt", "Frankfurt", "SGE"],
+      "manualFix": true
+    },
+    "367": {
+      "oddsApiId": 2534,
+      "sportmonksName": "Werder Bremen",
+      "oddsApiName": "Werder Bremen",
+      "league": "Bundesliga",
+      "aliases": ["Werder Bremen", "Bremen"],
+      "manualFix": true
+    },
+    "352": {
+      "oddsApiId": 2569,
+      "sportmonksName": "Hoffenheim",
+      "oddsApiName": "TSG Hoffenheim",
+      "league": "Bundesliga",
+      "aliases": ["Hoffenheim", "TSG Hoffenheim", "TSG 1899 Hoffenheim"],
+      "manualFix": true
+    },
+    "357": {
+      "oddsApiId": 2538,
+      "sportmonksName": "Freiburg",
+      "oddsApiName": "SC Freiburg",
+      "league": "Bundesliga",
+      "aliases": ["Freiburg", "SC Freiburg"],
+      "manualFix": true
+    },
+    "355": {
+      "oddsApiId": 2676,
+      "sportmonksName": "Hamburger SV",
+      "oddsApiName": "Hamburger SV",
+      "league": "Bundesliga",
+      "aliases": ["Hamburger SV", "Hamburg", "HSV"],
+      "manualFix": true
+    },
+    "1038": {
+      "oddsApiId": 2547,
+      "sportmonksName": "Union Berlin",
+      "oddsApiName": "Union Berlin",
+      "league": "Bundesliga",
+      "aliases": ["Union Berlin", "1. FC Union Berlin"],
+      "manualFix": true
+    },
+    "349": {
+      "oddsApiId": 2556,
+      "sportmonksName": "Mainz",
+      "oddsApiName": "FSV Mainz",
+      "league": "Bundesliga",
+      "aliases": ["Mainz", "FSV Mainz", "Mainz 05"],
+      "manualFix": true
+    },
+    "1083": {
+      "oddsApiId": 5885,
+      "sportmonksName": "Heidenheim",
+      "oddsApiName": "1. FC Heidenheim",
+      "league": "Bundesliga",
+      "aliases": ["Heidenheim", "1. FC Heidenheim", "FCH"],
+      "manualFix": true
+    },
+    "356": {
+      "oddsApiId": 2671,
+      "sportmonksName": "Cologne",
+      "oddsApiName": "1. FC Cologne",
+      "league": "Bundesliga",
+      "aliases": ["Cologne", "1. FC Cologne", "FC Koln", "Koln"],
+      "manualFix": true
+    },
+    "1768": {
+      "oddsApiId": 2526,
+      "sportmonksName": "St. Pauli",
+      "oddsApiName": "FC St. Pauli",
+      "league": "Bundesliga",
+      "aliases": ["St. Pauli", "FC St. Pauli", "Sankt Pauli"],
+      "manualFix": true
+    },
+    "358": {
+      "oddsApiId": 2677,
+      "sportmonksName": "Stuttgart",
+      "oddsApiName": "VfB Stuttgart",
+      "league": "Bundesliga",
+      "aliases": ["Stuttgart", "VfB Stuttgart"],
+      "manualFix": true
+    },
+    "350": {
+      "oddsApiId": 2527,
+      "sportmonksName": "Borussia Monchengladbach",
+      "oddsApiName": "Borussia Monchengladbach",
+      "league": "Bundesliga",
+      "aliases": ["Borussia Monchengladbach", "Gladbach", "BMG"],
+      "manualFix": true
+    },
+    "348": {
+      "oddsApiId": 2600,
+      "sportmonksName": "Augsburg",
+      "oddsApiName": "FC Augsburg",
+      "league": "Bundesliga",
+      "aliases": ["Augsburg", "FC Augsburg"],
+      "manualFix": true
+    },
+    "351": {
+      "oddsApiId": 2524,
+      "sportmonksName": "Wolfsburg",
+      "oddsApiName": "VfL Wolfsburg",
+      "league": "Bundesliga",
+      "aliases": ["Wolfsburg", "VfL Wolfsburg"],
+      "manualFix": true
+    }
+  },
+  "nameNormalization": {
+    "patterns": [
+      {"remove": "^FC\\s+", "note": "Remove FC prefix"},
+      {"remove": "\\s+FC$", "note": "Remove FC suffix"},
+      {"remove": "\\s+AFC$", "note": "Remove AFC suffix"},
+      {"remove": "^AFC\\s+", "note": "Remove AFC prefix"},
+      {"replace": ["United", "Utd"], "note": "Normalize United"},
+      {"replace": ["Saint", "St"], "note": "Normalize Saint"},
+      {"remove": "\\s+SC$", "note": "Remove SC suffix"},
+      {"remove": "\\s+CF$", "note": "Remove CF suffix"}
+    ]
+  }
+}
