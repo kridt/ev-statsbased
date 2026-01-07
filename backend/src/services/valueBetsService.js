@@ -318,8 +318,10 @@ class ValueBetsService {
     if (market.toLowerCase().includes('goal')) {
       return `Goals ${selection} ${line}`;
     }
-    if (market.toLowerCase().includes('btts') || market.toLowerCase().includes('both_teams')) {
-      return `BTTS ${bet.selection || (selection === 'over' ? 'Yes' : 'No')}`;
+    if (market.toLowerCase().includes('btts') || market.toLowerCase().includes('both_teams') || market.toLowerCase().includes('both teams')) {
+      // BTTS uses Yes/No instead of Over/Under
+      const bttsSelection = (bet.selection || selection || '').toLowerCase();
+      return `BTTS ${bttsSelection === 'yes' || bttsSelection === 'over' ? 'Yes' : 'No'}`;
     }
     if (market.toLowerCase().includes('corner')) {
       return `Corners ${selection} ${line}`;
