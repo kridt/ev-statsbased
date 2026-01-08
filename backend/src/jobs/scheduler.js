@@ -1,6 +1,7 @@
 import cron from 'node-cron';
 import prefetch from '../services/prefetch.js';
 import { valueBetsService } from '../services/valueBetsService.js';
+import { clvScheduler } from './clvScheduler.js';
 
 let scheduledJobs = [];
 
@@ -81,6 +82,11 @@ function startScheduler() {
     await prefetch.prefetchAllValueBets();
   }, 10000);
 
+  // Start CLV scheduler (runs every 1 minute)
+  // Captures closing odds 2 min before kickoff, settles bets after matches
+  clvScheduler.start();
+  console.log('[Scheduler] ✓ CLV Scheduler: captures closing odds 2 min before kickoff');
+
   console.log('[Scheduler] All jobs started');
 }
 
@@ -90,6 +96,7 @@ function startScheduler() {
 function stopScheduler() {
   scheduledJobs.forEach(job => job.stop());
   scheduledJobs = [];
+  clvScheduler.stop();
   console.log('[Scheduler] All jobs stopped');
 }
 

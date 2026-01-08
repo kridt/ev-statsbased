@@ -110,14 +110,11 @@ class ValueBetsService {
 
       console.log(`[ValueBetsService] Scan complete: ${scanMeta.valueBetsConfirmed} value bets from ${scanMeta.outliersFound} outliers in ${scanMeta.duration}ms`);
 
-      // Record new value bets for CLV tracking (Grade A and B only)
-      const betsToTrack = allValueBets.filter(bet =>
-        bet.confidence === 'A' || bet.confidence === 'B'
-      );
-      if (betsToTrack.length > 0) {
+      // Record ALL value bets for CLV tracking
+      if (allValueBets.length > 0) {
         try {
-          await clvTracker.recordBets(betsToTrack);
-          console.log(`[ValueBetsService] Recorded ${betsToTrack.length} bets for CLV tracking`);
+          await clvTracker.recordBets(allValueBets);
+          console.log(`[ValueBetsService] Recorded ${allValueBets.length} bets for CLV tracking`);
         } catch (clvErr) {
           console.error('[ValueBetsService] CLV tracking error:', clvErr.message);
         }
