@@ -1,169 +1,178 @@
 /**
- * Closing Line Value (CLV) Tracker
+ * Closing Line Value (CLV) Tracker - Supabase Version
  *
  * Tracks whether our value bet recommendations beat the closing line.
+ * Data is persisted in Supabase PostgreSQL database.
  *
  * CLV = (Our Odds - Closing Odds) / Closing Odds * 100
- *
- * Positive CLV means we got better odds than the market settled at,
- * which is a strong indicator of long-term profitability.
- *
- * Key metrics:
- * - CLV%: Average closing line value across all bets
- * - CLV Hit Rate: % of bets that beat the closing line
- * - Expected CLV: Based on edge at time of bet
  */
 
-import { cache } from '../../config/redis.js';
-
-// Cache keys
-const PENDING_BETS_KEY = 'clv:pending';
-const COMPLETED_BETS_KEY = 'clv:completed';
-const CLV_STATS_KEY = 'clv:stats';
+import { supabase } from '../../config/supabase.js';
 
 /**
- * Bet record structure for CLV tracking
+ * Convert bet object to database record format
  */
-const createBetRecord = (bet) => ({
-  // Identification
-  id: `${bet.fixtureId}-${bet.market}-${bet.selection}-${Date.now()}`,
-  fixtureId: bet.fixtureId,
-  fixtureName: bet.fixtureName,
-
-  // Market details
+const betToRecord = (bet) => ({
+  id: `${bet.fixtureId}-${bet.market || bet.marketId}-${bet.selection || ''}-${Date.now()}`,
+  fixture_id: bet.fixtureId,
+  fixture_name: bet.fixtureName,
   market: bet.market,
-  marketId: bet.marketId,
+  market_id: bet.marketId,
   selection: bet.selection,
-  selectionName: bet.selectionName,
-  line: bet.points,
-  betType: bet.betType,
-
-  // Odds at time of recommendation
-  openingOdds: bet.bookmakerOdds,
-  openingBookmaker: bet.bookmaker,
-  openingSharpOdds: bet.sharpOdds,
-  openingSharpBook: bet.sharpBook,
-
-  // Our model's assessment at opening
-  modelProbability: bet.probability,
-  modelFairOdds: bet.fairOdds,
-  modelEdge: bet.edge,
+  selection_name: bet.selectionName,
+  line: bet.points || bet.line,
+  bet_type: bet.betType,
+  opening_odds: bet.bookmakerOdds,
+  opening_bookmaker: bet.bookmaker,
+  opening_sharp_odds: bet.sharpOdds,
+  opening_sharp_book: bet.sharpBook,
+  model_probability: bet.probability,
+  model_fair_odds: bet.fairOdds,
+  model_edge: bet.edge,
   confidence: bet.grade || bet.confidence,
+  match_start_time: bet.startingAt,
+});
 
-  // Timestamps
-  recordedAt: new Date().toISOString(),
-  matchStartTime: bet.startingAt,
-
-  // To be filled at closing
-  closingOdds: null,
-  closingSharpOdds: null,
-  closedAt: null,
-
-  // Results (to be filled after match)
-  outcome: null, // 'win', 'loss', 'push', 'void'
-  actualResult: null, // e.g., 11 corners
-  settledAt: null,
-
-  // CLV metrics (calculated at closing)
-  clv: null,
-  clvPercent: null,
-  beatClosingLine: null,
+/**
+ * Convert database record to bet object format
+ */
+const recordToBet = (record) => ({
+  id: record.id,
+  fixtureId: record.fixture_id,
+  fixtureName: record.fixture_name,
+  market: record.market,
+  marketId: record.market_id,
+  selection: record.selection,
+  selectionName: record.selection_name,
+  line: record.line,
+  betType: record.bet_type,
+  openingOdds: record.opening_odds,
+  openingBookmaker: record.opening_bookmaker,
+  openingSharpOdds: record.opening_sharp_odds,
+  openingSharpBook: record.opening_sharp_book,
+  modelProbability: record.model_probability,
+  modelFairOdds: record.model_fair_odds,
+  modelEdge: record.model_edge,
+  confidence: record.confidence,
+  recordedAt: record.recorded_at,
+  matchStartTime: record.match_start_time,
+  closingOdds: record.closing_odds,
+  closingSharpOdds: record.closing_sharp_odds,
+  closedAt: record.closed_at,
+  outcome: record.outcome,
+  actualResult: record.actual_result,
+  settledAt: record.settled_at,
+  clv: record.clv,
+  clvPercent: record.clv_percent,
+  beatClosingLine: record.beat_closing_line,
 });
 
 class CLVTracker {
   constructor() {
-    this.pendingBets = new Map();
-    this.initialized = false;
-  }
-
-  /**
-   * Initialize tracker - load pending bets from cache
-   */
-  async initialize() {
-    if (this.initialized) return;
-
-    try {
-      const cached = await cache.get(PENDING_BETS_KEY);
-      if (cached && Array.isArray(cached)) {
-        cached.forEach(bet => {
-          this.pendingBets.set(bet.id, bet);
-        });
-        console.log(`[CLV] Loaded ${this.pendingBets.size} pending bets from cache`);
-      }
-      this.initialized = true;
-    } catch (err) {
-      console.error('[CLV] Failed to load from cache:', err.message);
-      this.initialized = true;
+    this.enabled = !!supabase;
+    if (!this.enabled) {
+      console.warn('[CLV] Supabase not configured - CLV tracking disabled');
     }
   }
 
   /**
    * Record a new value bet for CLV tracking
-   * Called when a value bet is identified/recommended
    */
   async recordBet(bet) {
-    await this.initialize();
+    if (!this.enabled) return null;
 
-    const record = createBetRecord(bet);
-    this.pendingBets.set(record.id, record);
+    try {
+      const record = betToRecord(bet);
 
-    // Persist to cache
-    await this.savePendingBets();
+      const { data, error } = await supabase
+        .from('clv_bets')
+        .upsert(record, { onConflict: 'id' })
+        .select()
+        .single();
 
-    console.log(`[CLV] Recorded bet: ${record.selectionName} @${record.openingOdds} (Edge: ${(record.modelEdge * 100).toFixed(1)}%)`);
+      if (error) throw error;
 
-    return record;
+      console.log(`[CLV] Recorded bet: ${record.selection_name} @${record.opening_odds}`);
+      return recordToBet(data);
+    } catch (err) {
+      console.error('[CLV] Error recording bet:', err.message);
+      return null;
+    }
   }
 
   /**
    * Record multiple bets at once
    */
   async recordBets(bets) {
-    const records = [];
-    for (const bet of bets) {
-      const record = await this.recordBet(bet);
-      records.push(record);
+    if (!this.enabled || !bets.length) return [];
+
+    try {
+      const records = bets.map(betToRecord);
+
+      const { data, error } = await supabase
+        .from('clv_bets')
+        .upsert(records, { onConflict: 'id' })
+        .select();
+
+      if (error) throw error;
+
+      console.log(`[CLV] Recorded ${data.length} bets`);
+      return data.map(recordToBet);
+    } catch (err) {
+      console.error('[CLV] Error recording bets:', err.message);
+      return [];
     }
-    return records;
   }
 
   /**
    * Update closing odds for a fixture
-   * Called just before match starts (or at match start)
    */
   async recordClosingOdds(fixtureId, closingOddsData) {
-    await this.initialize();
+    if (!this.enabled) return 0;
 
-    let updatedCount = 0;
+    try {
+      // Get pending bets for this fixture
+      const { data: bets, error: fetchError } = await supabase
+        .from('clv_bets')
+        .select('*')
+        .eq('fixture_id', fixtureId)
+        .is('closing_odds', null);
 
-    for (const [id, bet] of this.pendingBets) {
-      if (bet.fixtureId === fixtureId && !bet.closingOdds) {
-        // Find matching closing odds
-        const closingOdd = this.findMatchingOdds(bet, closingOddsData);
+      if (fetchError) throw fetchError;
+      if (!bets || bets.length === 0) return 0;
+
+      let updatedCount = 0;
+
+      for (const bet of bets) {
+        const closingOdd = this.findMatchingOdds(recordToBet(bet), closingOddsData);
 
         if (closingOdd) {
-          bet.closingOdds = closingOdd.playableOdds;
-          bet.closingSharpOdds = closingOdd.sharpOdds;
-          bet.closedAt = new Date().toISOString();
+          const clvResult = this.calculateCLV(bet.opening_odds, closingOdd.playableOdds);
 
-          // Calculate CLV
-          const clvResult = this.calculateCLV(bet.openingOdds, bet.closingOdds);
-          bet.clv = clvResult.clv;
-          bet.clvPercent = clvResult.clvPercent;
-          bet.beatClosingLine = clvResult.beatClosingLine;
+          const { error: updateError } = await supabase
+            .from('clv_bets')
+            .update({
+              closing_odds: closingOdd.playableOdds,
+              closing_sharp_odds: closingOdd.sharpOdds,
+              closed_at: new Date().toISOString(),
+              clv: clvResult.clv,
+              clv_percent: clvResult.clvPercent,
+              beat_closing_line: clvResult.beatClosingLine,
+            })
+            .eq('id', bet.id);
 
-          updatedCount++;
-
-          console.log(`[CLV] Closing odds recorded: ${bet.selectionName} - Opening @${bet.openingOdds} -> Closing @${bet.closingOdds} (CLV: ${bet.clvPercent > 0 ? '+' : ''}${bet.clvPercent.toFixed(2)}%)`);
+          if (!updateError) {
+            updatedCount++;
+            console.log(`[CLV] Closing odds: ${bet.selection_name} @${bet.opening_odds} -> @${closingOdd.playableOdds} (CLV: ${clvResult.clvPercent > 0 ? '+' : ''}${clvResult.clvPercent.toFixed(2)}%)`);
+          }
         }
       }
-    }
 
-    if (updatedCount > 0) {
-      await this.savePendingBets();
+      return updatedCount;
+    } catch (err) {
+      console.error('[CLV] Error recording closing odds:', err.message);
+      return 0;
     }
-
-    return updatedCount;
   }
 
   /**
@@ -172,7 +181,6 @@ class CLVTracker {
   findMatchingOdds(bet, closingOddsData) {
     if (!closingOddsData?.bookmakers) return null;
 
-    // Look for the same market/selection/line
     for (const [bookmaker, odds] of Object.entries(closingOddsData.bookmakers)) {
       for (const odd of odds) {
         const matchesMarket = odd.marketId === bet.marketId ||
@@ -196,29 +204,19 @@ class CLVTracker {
 
   /**
    * Calculate CLV between opening and closing odds
-   *
-   * CLV = (Opening Odds - Closing Odds) / Closing Odds
-   *
-   * Positive = Got better odds than closing (good)
-   * Negative = Worse odds than closing (bad)
    */
   calculateCLV(openingOdds, closingOdds) {
     if (!openingOdds || !closingOdds || closingOdds <= 1) {
       return { clv: 0, clvPercent: 0, beatClosingLine: false };
     }
 
-    // CLV in decimal form
     const clv = (openingOdds - closingOdds) / closingOdds;
-
-    // CLV as percentage
     const clvPercent = clv * 100;
-
-    // Did we beat the closing line?
     const beatClosingLine = openingOdds > closingOdds;
 
     return {
-      clv: parseFloat(clv.toFixed(4)),
-      clvPercent: parseFloat(clvPercent.toFixed(2)),
+      clv: parseFloat(clv.toFixed(6)),
+      clvPercent: parseFloat(clvPercent.toFixed(4)),
       beatClosingLine,
     };
   }
@@ -227,56 +225,63 @@ class CLVTracker {
    * Record bet outcome after match finishes
    */
   async recordOutcome(betId, outcome, actualResult = null) {
-    await this.initialize();
+    if (!this.enabled) return null;
 
-    const bet = this.pendingBets.get(betId);
-    if (!bet) {
-      console.warn(`[CLV] Bet not found: ${betId}`);
+    try {
+      const { data, error } = await supabase
+        .from('clv_bets')
+        .update({
+          outcome,
+          actual_result: actualResult?.toString(),
+          settled_at: new Date().toISOString(),
+        })
+        .eq('id', betId)
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      console.log(`[CLV] Settled: ${data.selection_name} - ${outcome.toUpperCase()}`);
+      return recordToBet(data);
+    } catch (err) {
+      console.error('[CLV] Error recording outcome:', err.message);
       return null;
     }
-
-    bet.outcome = outcome; // 'win', 'loss', 'push', 'void'
-    bet.actualResult = actualResult;
-    bet.settledAt = new Date().toISOString();
-
-    // Move to completed bets
-    this.pendingBets.delete(betId);
-    await this.saveCompletedBet(bet);
-    await this.savePendingBets();
-
-    // Update aggregate stats
-    await this.updateStats();
-
-    console.log(`[CLV] Bet settled: ${bet.selectionName} - ${outcome.toUpperCase()} (CLV: ${bet.clvPercent?.toFixed(2) || 'N/A'}%)`);
-
-    return bet;
   }
 
   /**
    * Auto-settle bets based on fixture results
    */
   async settleFixtureBets(fixtureId, fixtureStats) {
-    await this.initialize();
+    if (!this.enabled) return [];
 
-    const betsToSettle = [];
+    try {
+      const { data: bets, error } = await supabase
+        .from('clv_bets')
+        .select('*')
+        .eq('fixture_id', fixtureId)
+        .is('outcome', null);
 
-    for (const [id, bet] of this.pendingBets) {
-      if (bet.fixtureId === fixtureId) {
-        betsToSettle.push({ id, bet });
+      if (error) throw error;
+      if (!bets || bets.length === 0) return [];
+
+      const results = [];
+
+      for (const bet of bets) {
+        const betObj = recordToBet(bet);
+        const outcome = this.determineOutcome(betObj, fixtureStats);
+
+        if (outcome) {
+          const result = await this.recordOutcome(bet.id, outcome.result, outcome.actualValue);
+          if (result) results.push(result);
+        }
       }
+
+      return results;
+    } catch (err) {
+      console.error('[CLV] Error settling fixture bets:', err.message);
+      return [];
     }
-
-    const results = [];
-
-    for (const { id, bet } of betsToSettle) {
-      const outcome = this.determineOutcome(bet, fixtureStats);
-      if (outcome) {
-        const result = await this.recordOutcome(id, outcome.result, outcome.actualValue);
-        results.push(result);
-      }
-    }
-
-    return results;
   }
 
   /**
@@ -309,7 +314,6 @@ class CLVTracker {
 
     if (actualValue === null || actualValue === undefined) return null;
 
-    // Determine win/loss based on selection and line
     const selection = (bet.selection || '').toLowerCase();
     const line = bet.line;
 
@@ -325,123 +329,111 @@ class CLVTracker {
   }
 
   /**
-   * Get aggregate CLV statistics
+   * Get pending bets (not yet settled)
    */
-  async getStats() {
-    await this.initialize();
+  async getPendingBets() {
+    if (!this.enabled) return [];
 
     try {
-      const stats = await cache.get(CLV_STATS_KEY);
-      return stats || this.getEmptyStats();
-    } catch {
-      return this.getEmptyStats();
+      const { data, error } = await supabase
+        .from('clv_bets')
+        .select('*')
+        .is('outcome', null)
+        .order('recorded_at', { ascending: false });
+
+      if (error) throw error;
+      return (data || []).map(recordToBet);
+    } catch (err) {
+      console.error('[CLV] Error getting pending bets:', err.message);
+      return [];
     }
   }
 
   /**
-   * Empty stats structure
+   * Get completed bets
    */
-  getEmptyStats() {
-    return {
-      totalBets: 0,
-      settledBets: 0,
-      pendingBets: 0,
+  async getCompletedBets(limit = 100) {
+    if (!this.enabled) return [];
 
-      // CLV metrics
-      avgCLV: 0,
-      clvHitRate: 0, // % of bets beating closing line
-      totalCLV: 0,
+    try {
+      const { data, error } = await supabase
+        .from('clv_bets')
+        .select('*')
+        .not('outcome', 'is', null)
+        .order('settled_at', { ascending: false })
+        .limit(limit);
 
-      // Performance
-      wins: 0,
-      losses: 0,
-      pushes: 0,
-      winRate: 0,
-
-      // ROI (if tracking stakes)
-      totalStaked: 0,
-      totalReturn: 0,
-      roi: 0,
-
-      // By confidence grade
-      byGrade: {
-        A: { bets: 0, avgCLV: 0, winRate: 0 },
-        B: { bets: 0, avgCLV: 0, winRate: 0 },
-        C: { bets: 0, avgCLV: 0, winRate: 0 },
-      },
-
-      // By bet type
-      byMarket: {},
-
-      // Time series (last 30 days)
-      dailyStats: [],
-
-      lastUpdated: null,
-    };
+      if (error) throw error;
+      return (data || []).map(recordToBet);
+    } catch (err) {
+      console.error('[CLV] Error getting completed bets:', err.message);
+      return [];
+    }
   }
 
   /**
-   * Update aggregate statistics
+   * Get aggregate CLV statistics
    */
-  async updateStats() {
-    try {
-      const completed = await this.getCompletedBets();
+  async getStats() {
+    if (!this.enabled) return this.getEmptyStats();
 
-      if (!completed || completed.length === 0) {
-        return this.getEmptyStats();
-      }
+    try {
+      // Get all bets
+      const { data: allBets, error } = await supabase
+        .from('clv_bets')
+        .select('*');
+
+      if (error) throw error;
+      if (!allBets || allBets.length === 0) return this.getEmptyStats();
+
+      const completed = allBets.filter(b => b.outcome);
+      const pending = allBets.filter(b => !b.outcome);
 
       const stats = this.getEmptyStats();
-      stats.totalBets = completed.length + this.pendingBets.size;
+      stats.totalBets = allBets.length;
       stats.settledBets = completed.length;
-      stats.pendingBets = this.pendingBets.size;
+      stats.pendingBets = pending.length;
 
+      if (completed.length === 0) return stats;
+
+      // Calculate CLV metrics
       let totalCLV = 0;
       let clvBeats = 0;
-
-      const gradeStats = { A: [], B: [], C: [] };
+      const gradeStats = { A: [], B: [], C: [], D: [] };
       const marketStats = {};
 
       for (const bet of completed) {
-        // CLV tracking
-        if (bet.clvPercent !== null) {
-          totalCLV += bet.clvPercent;
-          if (bet.beatClosingLine) clvBeats++;
+        if (bet.clv_percent !== null) {
+          totalCLV += parseFloat(bet.clv_percent);
+          if (bet.beat_closing_line) clvBeats++;
         }
 
-        // Win/loss tracking
         if (bet.outcome === 'win') stats.wins++;
         else if (bet.outcome === 'loss') stats.losses++;
         else if (bet.outcome === 'push') stats.pushes++;
 
-        // By grade
         const grade = bet.confidence || 'C';
-        if (gradeStats[grade]) {
-          gradeStats[grade].push(bet);
-        }
+        if (gradeStats[grade]) gradeStats[grade].push(bet);
 
-        // By market
-        const market = bet.betType || 'other';
+        const market = bet.bet_type || 'other';
         if (!marketStats[market]) {
           marketStats[market] = { bets: [], wins: 0, clvTotal: 0 };
         }
         marketStats[market].bets.push(bet);
         if (bet.outcome === 'win') marketStats[market].wins++;
-        if (bet.clvPercent) marketStats[market].clvTotal += bet.clvPercent;
+        if (bet.clv_percent) marketStats[market].clvTotal += parseFloat(bet.clv_percent);
       }
 
-      // Calculate averages
       stats.avgCLV = completed.length > 0 ? totalCLV / completed.length : 0;
       stats.clvHitRate = completed.length > 0 ? (clvBeats / completed.length) * 100 : 0;
       stats.totalCLV = totalCLV;
-      stats.winRate = stats.settledBets > 0 ?
-        (stats.wins / (stats.wins + stats.losses)) * 100 : 0;
+      stats.winRate = stats.settledBets > 0 ? (stats.wins / (stats.wins + stats.losses)) * 100 : 0;
 
       // Grade breakdown
       for (const [grade, bets] of Object.entries(gradeStats)) {
         if (bets.length > 0) {
           const wins = bets.filter(b => b.outcome === 'win').length;
-          const clvSum = bets.reduce((sum, b) => sum + (b.clvPercent || 0), 0);
+          const clvSum = bets.reduce((sum, b) => sum + (parseFloat(b.clv_percent) || 0), 0);
           stats.byGrade[grade] = {
             bets: bets.length,
             avgCLV: parseFloat((clvSum / bets.length).toFixed(2)),
@@ -460,64 +452,41 @@ class CLVTracker {
       }
 
       stats.lastUpdated = new Date().toISOString();
-
-      // Save stats
-      await cache.set(CLV_STATS_KEY, stats, 86400); // 24 hour cache
-
       return stats;
     } catch (err) {
-      console.error('[CLV] Error updating stats:', err.message);
+      console.error('[CLV] Error getting stats:', err.message);
       return this.getEmptyStats();
     }
   }
 
   /**
-   * Get pending bets (not yet settled)
+   * Empty stats structure
    */
-  async getPendingBets() {
-    await this.initialize();
-    return Array.from(this.pendingBets.values());
-  }
-
-  /**
-   * Get completed bets from cache
-   */
-  async getCompletedBets(limit = 1000) {
-    try {
-      const completed = await cache.get(COMPLETED_BETS_KEY);
-      if (!completed) return [];
-      return completed.slice(-limit);
-    } catch {
-      return [];
-    }
-  }
-
-  /**
-   * Save pending bets to cache
-   */
-  async savePendingBets() {
-    try {
-      const bets = Array.from(this.pendingBets.values());
-      await cache.set(PENDING_BETS_KEY, bets, 86400 * 7); // 7 days
-    } catch (err) {
-      console.error('[CLV] Failed to save pending bets:', err.message);
-    }
-  }
-
-  /**
-   * Save a completed bet
-   */
-  async saveCompletedBet(bet) {
-    try {
-      const completed = await this.getCompletedBets();
-      completed.push(bet);
-
-      // Keep last 1000 bets
-      const trimmed = completed.slice(-1000);
-      await cache.set(COMPLETED_BETS_KEY, trimmed, 86400 * 90); // 90 days
-    } catch (err) {
-      console.error('[CLV] Failed to save completed bet:', err.message);
-    }
+  getEmptyStats() {
+    return {
+      totalBets: 0,
+      settledBets: 0,
+      pendingBets: 0,
+      avgCLV: 0,
+      clvHitRate: 0,
+      totalCLV: 0,
+      wins: 0,
+      losses: 0,
+      pushes: 0,
+      winRate: 0,
+      totalStaked: 0,
+      totalReturn: 0,
+      roi: 0,
+      byGrade: {
+        A: { bets: 0, avgCLV: 0, winRate: 0 },
+        B: { bets: 0, avgCLV: 0, winRate: 0 },
+        C: { bets: 0, avgCLV: 0, winRate: 0 },
+        D: { bets: 0, avgCLV: 0, winRate: 0 },
+      },
+      byMarket: {},
+      dailyStats: [],
+      lastUpdated: null,
+    };
   }
 
   /**
@@ -526,33 +495,28 @@ class CLVTracker {
   async generateReport() {
     const stats = await this.getStats();
     const pending = await this.getPendingBets();
-    const completed = await this.getCompletedBets(100);
+    const completed = await this.getCompletedBets(20);
 
     return {
       summary: {
         totalBets: stats.totalBets,
         settledBets: stats.settledBets,
         pendingBets: stats.pendingBets,
-
         clv: {
           average: `${stats.avgCLV > 0 ? '+' : ''}${stats.avgCLV.toFixed(2)}%`,
           hitRate: `${stats.clvHitRate.toFixed(1)}%`,
           interpretation: this.interpretCLV(stats.avgCLV),
         },
-
         performance: {
           wins: stats.wins,
           losses: stats.losses,
           winRate: `${stats.winRate.toFixed(1)}%`,
         },
       },
-
       byGrade: stats.byGrade,
       byMarket: stats.byMarket,
-
-      recentBets: completed.slice(-20).reverse(),
+      recentBets: completed,
       pendingBets: pending,
-
       generatedAt: new Date().toISOString(),
     };
   }
