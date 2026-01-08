@@ -13,6 +13,7 @@ import sportmonks from './sportmonks.js';
 import { opticOddsService } from './opticOdds.js';
 import { marketScanner } from './marketScanner.js';
 import { OPTIC_ODDS_CONFIG } from '../config/opticOddsConfig.js';
+import { clvTracker } from '../models/probability/clvTracker.js';
 
 const { minEdge } = OPTIC_ODDS_CONFIG;
 
@@ -108,6 +109,19 @@ class ValueBetsService {
       }, CONFIG.CACHE_TTL);
 
       console.log(`[ValueBetsService] Scan complete: ${scanMeta.valueBetsConfirmed} value bets from ${scanMeta.outliersFound} outliers in ${scanMeta.duration}ms`);
+
+      // Record new value bets for CLV tracking (Grade A and B only)
+      const betsToTrack = allValueBets.filter(bet =>
+        bet.confidence === 'A' || bet.confidence === 'B'
+      );
+      if (betsToTrack.length > 0) {
+        try {
+          await clvTracker.recordBets(betsToTrack);
+          console.log(`[ValueBetsService] Recorded ${betsToTrack.length} bets for CLV tracking`);
+        } catch (clvErr) {
+          console.error('[ValueBetsService] CLV tracking error:', clvErr.message);
+        }
+      }
 
       return { valueBets: allValueBets, meta: scanMeta };
     } catch (error) {

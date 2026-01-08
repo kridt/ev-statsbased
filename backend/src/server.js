@@ -12,6 +12,7 @@ import leaguesRouter from './routes/leagues.js';
 import probabilityRouter from './routes/probability.js';
 import oddsRouter from './routes/odds.js';
 import valueBetsRouter from './routes/valueBets.js';
+import clvRouter from './routes/clv.js';
 
 // Import socket handlers
 import { setupSocketHandlers } from './sockets/liveUpdates.js';
@@ -70,6 +71,7 @@ app.use('/api/leagues', leaguesRouter);
 app.use('/api/probability', probabilityRouter);
 app.use('/api/odds', oddsRouter);
 app.use('/api/value-bets', valueBetsRouter);
+app.use('/api/clv', clvRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

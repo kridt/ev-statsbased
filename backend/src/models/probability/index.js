@@ -118,6 +118,10 @@ export {
   generateBacktestReport,
 } from './backtesting.js';
 
+// CLV (Closing Line Value) tracking
+export { default as clvTracker } from './clvTracker.js';
+export { clvTracker as clv } from './clvTracker.js';
+
 // Market-specific models
 export { default as cornersModel } from './cornersModel.js';
 export { default as cardsModel } from './cardsModel.js';
