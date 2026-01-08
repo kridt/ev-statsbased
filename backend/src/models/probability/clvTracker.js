@@ -13,7 +13,8 @@ import { supabase } from '../../config/supabase.js';
  * Convert bet object to database record format
  */
 const betToRecord = (bet) => ({
-  id: `${bet.fixtureId}-${bet.market || bet.marketId}-${bet.selection || ''}-${Date.now()}`,
+  // ID: unique per bet opportunity (fixture + market + selection + line)
+  id: `${bet.fixtureId}-${bet.marketId || bet.market}-${bet.selectionLine || bet.selection || ''}-${bet.points || bet.line || 0}`,
   fixture_id: bet.fixtureId,
   fixture_name: bet.fixtureName,
   market: bet.market,
