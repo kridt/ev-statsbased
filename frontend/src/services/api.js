@@ -101,4 +101,12 @@ export const probabilityApi = {
   getBookmakers: () => api.get('/value-bets/bookmakers'),
 };
 
+// CLV Tracking API
+export const clvApi = {
+  getPending: () => api.get('/clv/pending'),
+  getCompleted: (limit = 100) => api.get(`/clv/completed?limit=${limit}`),
+  getStats: () => api.get('/clv/stats'),
+  getReport: () => api.get('/clv/report'),
+};
+
 export default api;

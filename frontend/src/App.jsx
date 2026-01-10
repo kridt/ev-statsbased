@@ -9,6 +9,7 @@ import PlayerPage from './pages/PlayerPage';
 import LeaguePage from './pages/LeaguePage';
 import FavoritesPage from './pages/FavoritesPage';
 import SearchPage from './pages/SearchPage';
+import CLVAdminPage from './pages/CLVAdminPage';
 // PWAInstallBanner temporarily disabled due to duplicate React issue
 // import PWAInstallBanner from './components/PWAInstallBanner';
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/league/:id" element={<LeaguePage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/admin/clv" element={<CLVAdminPage />} />
         </Routes>
       </AnimatePresence>
     </Layout>

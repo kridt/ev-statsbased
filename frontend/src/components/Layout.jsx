@@ -12,6 +12,7 @@ import {
   X,
   TrendingUp,
   Calendar,
+  BarChart3,
 } from 'lucide-react';
 import { useState } from 'react';
 import { useSocket } from '../context/SocketContext';
@@ -21,6 +22,7 @@ import NotificationToast from './NotificationToast';
 const navItems = [
   { path: '/', icon: TrendingUp, label: 'Value Bets' },
   { path: '/matches', icon: Calendar, label: 'Matches' },
+  { path: '/admin/clv', icon: BarChart3, label: 'CLV Tracker' },
   { path: '/favorites', icon: Star, label: 'Favorites' },
   { path: '/search', icon: Search, label: 'Search' },
 ];
